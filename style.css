@@ -1,0 +1,609 @@
+bzody {
+    box-sizing: border-box;
+    font-size: 16px;
+    user-select: none;
+}
+
+:root {
+    --borderRadius: 5px;
+    --boxShadow: 2px 3px 3px rgba(0, 0, 0, 0.329);
+}
+
+
+/* Grid Container  */
+
+.containerBox {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px 35px 10px 35px;
+    background: linear-gradient(180deg, rgba(135, 206, 235, 1) 39%, rgba(255, 255, 255, 1) 76%);
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 0.8fr 2fr 3fr;
+    grid-template-rows: 0.5fr 1fr 3fr;
+    grid-template-areas: 'side-bar search-bar search-bar' 'side-bar track-bar track-bar' 'side-bar player-box list-box';
+}
+
+
+/* Sider Bar */
+
+.side-bar {
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+    background-color: whitesmoke;
+    grid-area: side-bar;
+}
+
+.side-bar .nav-list li {
+    list-style: none;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.side-bar .nav-list li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.side-bar .nav-list li span {
+    margin-left: 10px;
+}
+
+.nav-list .bi-play-circle {
+    margin: 0;
+}
+
+.search-bar {
+    background-color: transparent;
+    border-bottom: 1px solid beige;
+    grid-area: search-bar;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 560px;
+    height: 40px;
+    padding: 15px;
+    border-radius: 5px;
+    transition: transform 1s;
+}
+
+.sboxborder {
+    box-shadow: 0px 0px 5px 2px rgba(148, 153, 15, 1);
+}
+
+input {
+    border: none;
+    width: 500px;
+    font-size: 16px;
+}
+
+.search {
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    border-left: #cfc2c2 solid 1px;
+    font-size: 20px;
+}
+
+.clearsearch {
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    font-size: 20px;
+}
+
+.bi-x,
+.bi-search {
+    font-size: 20px;
+    color: rgb(230, 117, 37);
+}
+
+.bi-x:hover,
+.bi-search:hover {
+    color: rgb(42, 1, 53);
+    font-size: 22px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.login {
+    margin-right: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#profileImg {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.login span {
+    margin-right: 15px;
+    padding-right: 10px;
+    border-right: 1px solid black;
+}
+
+.login i {
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.login i:hover {
+    color: blue;
+}
+
+.sidebarButton {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    color: blue;
+    display: none;
+}
+
+.sidebarButton .bi-layout-text-sidebar {
+    font-size: 25px;
+}
+
+.sidebarButton:focus {
+    box-shadow: 0px 0px 5px 2px rgba(143, 119, 209, 1);
+}
+
+
+/* Track Bar */
+
+.track-bar {
+    background-color: transparent;
+    grid-area: track-bar;
+    padding: 3px;
+}
+
+#top {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topbar .arrowIcon .bi {
+    color: whitesmoke;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+#list {
+    color: cadetblue;
+}
+
+.playContainer {
+    border-radius: var(--borderRadius);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 160px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.playContainer::-webkit-scrollbar {
+    display: none;
+}
+
+#playListContainer {
+    width: 200%;
+    height: 80%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: 10px;
+    animation: slide 15s linear infinite alternate;
+}
+
+@keyframes slide {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -300px;
+    }
+}
+
+.playContainer:hover #playListContainer {
+    animation-play-state: paused;
+}
+
+.aniPlay {
+    display: none;
+}
+
+
+/* 300 15s */
+
+.trackDivStyle {
+    width: 150px;
+    height: 90px;
+    border-radius: var(--borderRadius);
+    transition: transform;
+    padding: 10px 5px;
+    cursor: pointer;
+    box-shadow: var(--boxShadow);
+    outline: none;
+    border: none;
+}
+
+.trackDivStyle:focus {
+    transform: scale(1.03);
+    border: solid 2px rgba(255, 255, 255, 0.781);
+}
+
+.trackTitle {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: bold;
+    user-select: none;
+    cursor: pointer;
+}
+
+.trackTitle:hover {
+    color: blue;
+}
+
+.singer {
+    color: rgb(167, 102, 17);
+    font-size: 12px;
+    margin-top: 8px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.singer::after {
+    content: "Download";
+    padding: 3px;
+    margin-left: 20px;
+    color: blue;
+    background-color: burlywood;
+    border-radius: 3px;
+}
+
+
+/* Player Box */
+
+.player-box {
+    background-color: transparent;
+    grid-area: player-box;
+}
+
+.player-box p,
+.track-bar p,
+.list-box p {
+    font-weight: bold;
+}
+
+.audio {
+    width: 100%;
+    height: 85%;
+    position: relative;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: space-between;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderRadius);
+}
+
+.trackImageandTitle {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.playtrackTitle {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.trackSinger {
+    font-size: 14px;
+}
+
+.currentAndTotleTime {
+    display: flex;
+    justify-content: space-between;
+}
+
+.side-bar,
+.search-bar,
+.track-bar {
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+}
+
+.trackPlayer {
+    width: 70%;
+}
+
+.playingBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.play,
+.pause {
+    outline: inherit;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px rgb(121, 85, 219);
+    border: none;
+}
+
+.shuffle,
+.previous,
+.next,
+.volume {
+    outline: inherit;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 2px rgba(143, 119, 209, 1);
+    text-align: center;
+    border: none;
+}
+
+.play:hover,
+.pause:hover,
+.previous:hover,
+.next:hover,
+.volume {
+    color: blue;
+}
+
+.play:focus,
+.pause:focus,
+.previous:focus,
+.next:focus,
+.volume:focus {
+    box-shadow: 0px 0px 5px 2px rgba(148, 153, 15, 1);
+}
+
+.pause {
+    display: none;
+}
+
+.trackImage {
+    width: 150px;
+    height: 100px;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+}
+
+.volumeRangeAndText {
+    position: absolute;
+    right: 2px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.form-range {
+    width: 50px;
+}
+
+.progressBar {
+    width: 100%;
+}
+
+
+/* List Box */
+
+.list-box {
+    background-color: transparent;
+    grid-area: list-box;
+    overflow: hidden;
+    border-radius: var(--borderRadius);
+}
+
+#tracklist {
+    height: 85%;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#tracklist::-webkit-scrollbar {
+    display: none;
+}
+
+.trackListDivStyle {
+    width: 100%;
+    height: 55px;
+    margin-bottom: 5px;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listImage {
+    width: 55px;
+    height: 55px;
+    border-radius: 5px;
+    margin-right: 40px;
+}
+
+.listTitle {
+    font-size: 14px;
+    width: 180px;
+    margin-right: 5px;
+}
+
+.listSinger {
+    font-size: 14px;
+    width: 100px;
+    margin-right: 25px;
+}
+
+.listDuration {
+    font-size: 15px;
+    margin-right: 25px;
+}
+
+.bi-play-circle,
+.bi-cloud-download,
+.bi-heart-fill {
+    font-size: 20px;
+    margin-right: 25px;
+}
+
+.bi-heart-fill {
+    color: rgb(99, 180, 235);
+}
+
+.bi-play-circle:hover,
+.bi-cloud-download:hover,
+.bi-heart-fill:hover {
+    font-size: 22px;
+    color: blue;
+    cursor: pointer;
+}
+
+.listPlayBtnStyle {
+    border: none;
+    width: 30px;
+    height: 30px;
+    background-color: inherit;
+    margin-right: 25px;
+    border-radius: 50%;
+}
+
+
+/* for Tablet */
+
+@media screen and (max-width: 1000px) {
+    .side-bar {
+        display: none;
+    }
+    .searchbox {
+        width: 400px;
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+    .track-bar {
+        width: 100vw;
+    }
+    .trackImage {
+        width: 120px;
+        height: 90px;
+        margin-top: 3px;
+    }
+    .list-box {
+        width: 100vw;
+        height: 100vh;
+        padding: 3px;
+    }
+    .trackListDivStyle {
+        display: flex;
+        justify-content: space-around;
+    }
+    .listTitle {
+        margin-left: 2px;
+    }
+    .bi-play-circle {
+        margin: 2px;
+        font-size: 20px;
+    }
+    .player-box {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+    }
+    .player-box>p {
+        display: none;
+    }
+    .containerBox {
+        display: grid;
+        padding: 5px;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: 'search-bar' 'track-bar' 'list-box' 'player-box';
+    }
+}
+
+
+/* for mobile */
+
+@media screen and (max-width: 450px) {
+    .side-bar {
+        display: none;
+    }
+    .search-bar {
+        display: none;
+    }
+    .track-bar {
+        width: 100vw;
+    }
+    .list-box {
+        width: 100vw;
+        height: 100vh;
+        padding: 3px;
+    }
+    .trackListDivStyle {
+        display: flex;
+        justify-content: space-around;
+    }
+    .listImage,
+    .bi-cloud-download,
+    .bi-heart-fill {
+        display: none;
+    }
+    .listTitle {
+        margin-left: 2px;
+    }
+    .bi-play-circle {
+        margin: 2px;
+        font-size: 20px;
+    }
+    .listTitle,
+    .listSinger,
+    .listDuration {
+        margin-right: 2px;
+        font-size: 14px;
+    }
+    .player-box {
+        position: fixed;
+        width: 100vw;
+        bottom: 0;
+    }
+    .player-box>p {
+        display: none;
+    }
+    .currentPlayRange {
+        width: 100%;
+    }
+}

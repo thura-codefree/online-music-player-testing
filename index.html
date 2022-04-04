@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.0/cosmo/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Online Music Player</title>
+</head>
+
+<body>
+
+    <!--      Container    -->
+    <div class="containerBox">
+
+        <!--      Side Bar    -->
+        <div class="side-bar">
+            <ul class="nav-list">
+                <li>
+                    <p>
+                        <i class="bi bi-music-note-list"></i>
+                        <span class="links_name">My Music Player</span>
+                    </p>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-house-heart" title="Home"></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-file-earmark-music" title="Top Songs"></i>
+                        <span class="links_name">Top Songs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-vinyl-fill" title="Albums"></i>
+                        <span class="links_name">Albums</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-broadcast-pin" title="Podcasts"></i>
+                        <span class="links_name">Podcasts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-person-plus" title="Artists"></i>
+                        <span class="links_name">Artists</span>
+                    </a>
+                </li><br>
+                <li>
+                    <p> My Music</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-music-note-beamed" title="Requested song"></i>
+                        <span class="links_name">Requested song</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-collection-play" title="My Collections"></i>
+                        <span class="links_name">My Collections</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-play-circle" title="My Collections"></i>
+                        <span class="links_name">Recently Played</span>
+                    </a>
+                </li><br>
+                <li>
+                    <p>Present</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-gift" title="Birthday songs"></i>
+                        <span class="links_name">Birthday songs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="bi bi-box2-heart" title="For friends"></i>
+                        <span class="links_name">For friends</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!--      Search Bar    -->
+        <div class="search-bar">
+            <div class="searchbox">
+                <input class="input" type="text" name="search" id="" placeholder="Search..">
+                <button class="clearsearch"><i class="bi bi-x"></i></button>
+                <button class="search"><i class="bi bi-search"></i></button>
+            </div>
+            <div class="login">
+                <img src="image/profile.jpg" alt="" id="profileImg"><span>Kyaw Thura</span>
+                <i class="bi bi-bell"></i>
+                <i class="bi bi-gear"></i>
+            </div>
+            <button class="sidebarButton"><i class="bi bi-layout-text-sidebar"></i></button>
+        </div>
+
+        <!--      Track Bar    -->
+        <div class="track-bar">
+            <div class="topbar">
+                <p id="top">Top Songs <span id="list"></span></p>
+                <div class="arrowIcon">
+                    <i class="bi bi-chevron-left"></i>
+                    <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
+            <div class="playContainer">
+                <div id="playListContainer">
+                </div>
+            </div>
+        </div>
+
+        <!--      Player Box    -->
+        <div class="player-box">
+            <p>Now Playing</p>
+            <div class="audio">
+                <div class="trackImageandTitle">
+                    <img class="trackImage" src="image/images.png" alt="">
+                    <div class="playtrackTitle">Title</div>
+                    <div class="trackSinger">Singer</div>
+                </div>
+                <div class="trackPlayer">
+                    <audio src=""></audio>
+                    <input class="progressBar" type="range" min="1" max="100" value="0">
+                    <div class="currentAndTotleTime">
+                        <div class="currentduration">00:00</div>
+                        <div class="currentTime">00:00</div>
+                    </div>
+                    <div class="playingBar">
+                        <button class="shuffle" title="Shuffle"><i class="bi bi-shuffle"></i></button>
+                        <button class="previous" title="Previous"><i class="bi bi-skip-backward"></i></button>
+                        <button class="play" title="Play"><i class="bi bi-play"></i></button>
+                        <button class="pause" title="Pause"><i class="bi bi-pause"></i></button>
+                        <button class="next" title="Next"><i class="bi bi-skip-forward"></i></button>
+                        <button class="volume" title="volume"><i class="bi bi-volume-up "></i></button>
+                        <div class="volumeRangeAndText">
+                            <input type="range" class="form-range" id="volume-control" value="100">
+                            <div class="volumeText"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--      Music List Box    -->
+        <div class="list-box">
+            <p>Mostly Played</p>
+            <div id="tracklist">
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+
+</body>
+
+</html>
