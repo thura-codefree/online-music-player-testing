@@ -23,37 +23,37 @@
                 <li>
                     <p>
                         <i class="bi bi-music-note-list"></i>
-                        <span class="links_name">My Music Player</span>
+                        <span>My Music Player</span>
                     </p>
                 </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-house-heart" title="Home"></i>
-                        <span class="links_name">Home</span>
+                        <span>Home</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-file-earmark-music" title="Top Songs"></i>
-                        <span class="links_name">Top Songs</span>
+                        <span>Top Songs</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-vinyl-fill" title="Albums"></i>
-                        <span class="links_name">Albums</span>
+                        <span>Albums</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-broadcast-pin" title="Podcasts"></i>
-                        <span class="links_name">Podcasts</span>
+                        <span>Podcasts</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-person-plus" title="Artists"></i>
-                        <span class="links_name">Artists</span>
+                        <span>Artists</span>
                     </a>
                 </li><br>
                 <li>
@@ -62,19 +62,19 @@
                 <li>
                     <a href="#">
                         <i class="bi bi-music-note-beamed" title="Requested song"></i>
-                        <span class="links_name">Requested song</span>
+                        <span>Requested song</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-collection-play" title="My Collections"></i>
-                        <span class="links_name">My Collections</span>
+                        <span>My Collections</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-play-circle" title="My Collections"></i>
-                        <span class="links_name">Recently Played</span>
+                        <span>Recently Played</span>
                     </a>
                 </li><br>
                 <li>
@@ -83,13 +83,13 @@
                 <li>
                     <a href="#">
                         <i class="bi bi-gift" title="Birthday songs"></i>
-                        <span class="links_name">Birthday songs</span>
+                        <span>Birthday songs</span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <i class="bi bi-box2-heart" title="For friends"></i>
-                        <span class="links_name">For friends</span>
+                        <span>For friends</span>
                     </a>
                 </li>
             </ul>
@@ -99,6 +99,7 @@
         <div class="search-bar">
             <div class="searchbox">
                 <input class="input" type="text" name="search" id="" placeholder="Search..">
+                <div class="resultContainer"></div>
                 <button class="clearsearch"><i class="bi bi-x"></i></button>
                 <button class="search"><i class="bi bi-search"></i></button>
             </div>
@@ -135,7 +136,7 @@
                     <div class="trackSinger">Singer</div>
                 </div>
                 <div class="trackPlayer">
-                    <audio src=""></audio>
+                    <audio src="" class="audioTag"></audio>
                     <input class="progressBar" type="range" min="1" max="100" value="0">
                     <div class="currentAndTotleTime">
                         <div class="currentduration">00:00</div>
