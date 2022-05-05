@@ -3,7 +3,8 @@ const input = document.getElementsByTagName('input')[0];
 const searchbox = document.querySelector(".searchbox");
 const playContainer = document.querySelector(".playContainer");
 const playListContainer = document.getElementById("playListContainer");
-const audiotag = document.getElementsByTagName("audio")[0];
+// const audiotag = document.getElementsByTagName("audio")[0];
+const audiotag = document.getElementsByClassName("audioTag")[0];
 const shuffleBtn = document.querySelector(".shuffle")
 const playbtn = document.querySelector(".play");
 const pausebtn = document.querySelector(".pause");
@@ -18,6 +19,8 @@ const currentduration = document.querySelector(".currentduration");
 const currentTime = document.querySelector(".currentTime");
 const trackListDivStyleTag = document.querySelector(".trackListDivStyle");
 const progressBarTag = document.querySelector(".progressBar");
+const resultContainerTag = document.querySelector(".resultContainer");
+
 let currentPlayingIndex = 0;
 let isPlaying = true;
 
@@ -41,6 +44,7 @@ clearsearch.addEventListener("blur", () => {
 
 // Songs Using Array List
 const tracks = [{
+        id: 1,
         trackID: "music/DJ Khaled - I'm The One ft. Justin Bieber.mp3",
         title: "I'm The One",
         duration: "05:21",
@@ -48,6 +52,7 @@ const tracks = [{
         background: "image/1.jpg"
     },
     {
+        id: 2,
         trackID: "music/အချစ်အတွက်တဖန်မွေးဖွားခြင်း-စိုင်းထီးဆိုင်.mp3",
         title: "အချစ်တွက်တဖန်မွေးဖွားခြင်း",
         duration: "03:23",
@@ -55,6 +60,7 @@ const tracks = [{
         background: "image/2.jpg"
     },
     {
+        id: 3,
         trackID: "music/ရှမ်းစကားလေးနဲ့နှုတ်ဆက်ကြတယ်-စိုင်းဆိုင်မောဝ်.mp3",
         title: "ရှမ်းစကားလေးနဲ့နှုတ်ဆက်မယ်",
         duration: "03:18",
@@ -62,6 +68,7 @@ const tracks = [{
         background: "image/3.jpg"
     },
     {
+        id: 4,
         trackID: "music/ချယ်ရီကိုသာပန်ပါကွယ်.mp3",
         title: "ချယ်ရီကိုသာပန်ပါကွယ်",
         duration: "04:19",
@@ -69,6 +76,7 @@ const tracks = [{
         background: "image/4.jpg"
     },
     {
+        id: 5,
         trackID: "music/ဘိုဖြူ-နေဝင်ချိန်.mp3",
         title: "နေဝင်ချိန်",
         duration: "04:17",
@@ -76,6 +84,7 @@ const tracks = [{
         background: "image/5.jpg"
     },
     {
+        id: 6,
         trackID: "music/တစ်ရက်တော့ငိုပါ - ဆောင်းဦးလှိုင် + မို့မို့ .mp3",
         title: "တစ်ရက်တော့ငိုပါ",
         duration: "03:34",
@@ -83,6 +92,7 @@ const tracks = [{
         background: "image/6.jpg"
     },
     {
+        id: 7,
         trackID: "music/တိုးတိုးလေးပြောပါ-ဖိုးကာ.mp3",
         title: "တိုးတိုးလေးပြောပါ",
         duration: "03:50",
@@ -90,6 +100,7 @@ const tracks = [{
         background: "image/7.jpg"
     },
     {
+        id: 8,
         trackID: "music/ရိုးရှင်းသောဘဝ-မျိုးကြီး.mp3",
         title: "ရိုးရှင်းသောဘဝ",
         duration: "4:10",
@@ -97,6 +108,7 @@ const tracks = [{
         background: "image/8.jpg"
     },
     {
+        id: 9,
         trackID: "music/အပြာရောင်ည - မျိုးကြီး.mp3",
         title: "အပြာရောင်ည",
         duration: "03:41",
@@ -104,6 +116,7 @@ const tracks = [{
         background: "image/9.jpg"
     },
     {
+        id: 10,
         trackID: "music/ဖန်သားနန်းတော်-black hole.mp3",
         title: "ဖန်သားနန်းတော်",
         duration: "03:17",
@@ -206,6 +219,7 @@ playbtn.addEventListener("click", () => {
         audiotag.play();
         isPlaying = true;
         updatePlayAndPauseButton();
+        currentPlayingIndex += 1;
     }
 });
 
@@ -326,8 +340,86 @@ for (let i = 0; i < tracks.length; i++) {
     const listFavBtn = document.createElement("i");
     listFavBtn.classList.add("bi-heart-fill");
     listFavBtn.addEventListener("click", () => {
-        listFavBtn.style.color = "blue";
+        if (listFavBtn.classList.contains("IsOpened")) {
+            listFavBtn.style.color = "#63b4eb";
+            listFavBtn.classList.remove("IsOpened");
+        } else {
+            listFavBtn.style.color = "blue";
+            listFavBtn.classList.add("IsOpened");
+        }
+
     });
     trackListDiv.append(listFavBtn);
     trackListContainer.append(trackListDiv);
+}
+// autocomplete
+let filterProduct = [];
+input.addEventListener("keyup", (eventKeyword) => {
+    if (
+        eventKeyword.key === "ArrowDown" ||
+        eventKeyword.key === "ArrowUp" ||
+        eventKeyword.key === "Enter"
+    ) {
+        navigateAndSelectProduct(eventKeyword.key);
+        return;
+    }
+    resultContainerTag.innerHTML = "";
+    const searchText = eventKeyword.target.value.toLowerCase();
+    if (searchText.length === 0) {
+        return;
+    }
+    filterProduct = tracks.filter((product) => product.title.toLowerCase().includes(searchText));
+
+    const hasProductsToShow = filterProduct.length > 0;
+    if (hasProductsToShow) {
+
+        for (let i = 0; filterProduct.length > i; i++) {
+            const productItemContainerTag = document.createElement("div");
+            productItemContainerTag.id = filterProduct[i].id;
+            productItemContainerTag.classList.add("productItemContainer");
+            const searchResultTitle = filterProduct[i].title;
+            productItemContainerTag.append(searchResultTitle);
+            resultContainerTag.append(productItemContainerTag);
+        }
+    }
+});
+let indexToSelect = -1;
+const navigateAndSelectProduct = (key) => {
+    if (key === "ArrowDown") {
+        if (indexToSelect === filterProduct.length - 1) {
+            indexToSelect = -1;
+            deselectProduct();
+            return;
+        }
+        indexToSelect += 1;
+        const productItemContainerToSelect = selectProduct(indexToSelect);
+        if (indexToSelect > 0) {
+            deselectProduct();
+        }
+        productItemContainerToSelect.classList.add("selected");
+
+    } else if (key === "ArrowUp") {
+        if (indexToSelect === 0) {
+            return;
+        }
+        indexToSelect -= 1;
+        productItemContainerToSelect.classList.add("selected");
+        deselectProduct();
+        selectProduct(indexToSelect);
+    } else {
+
+    }
+}
+const selectProduct = (index) => {
+    const productIdToSelect = filterProduct[index].id.toString();
+    const productItemContainerToSelect = document.getElementById(productIdToSelect);
+    productItemContainerToSelect.style.backgroundColor = "pink";
+    productItemContainerToSelect.style.color = "white";
+    return productItemContainerToSelect;
+}
+const deselectProduct = () => {
+    const productToDeselect = document.getElementsByClassName("selected")[0];
+    productToDeselect.style.backgroundColor = "white";
+    productToDeselect.style.color = "black";
+    productToDeselect.classList.remove("selected");
 }
