@@ -1,4 +1,4 @@
-bzody {
+body {
     box-sizing: border-box;
     font-size: 16px;
     user-select: none;
@@ -83,6 +83,27 @@ input {
     border: none;
     width: 500px;
     font-size: 16px;
+}
+
+.resultContainer {
+    background-color: white;
+    width: 500px;
+    position: absolute;
+    top: 10%;
+    left: 18%;
+    z-index: 100;
+    border-radius: var(--borderRadius);
+}
+
+.productItemContainer {
+    cursor: pointer;
+    height: 40px;
+    padding: 10px;
+}
+
+.productItemContainer:hover {
+    background-color: rgb(192, 192, 209);
+    border-radius: var(--borderRadius);
 }
 
 .search {
@@ -482,7 +503,7 @@ input:focus {
 }
 
 .bi-heart-fill {
-    color: rgb(99, 180, 235);
+    color: #63b4eb;
 }
 
 .bi-play-circle:hover,
