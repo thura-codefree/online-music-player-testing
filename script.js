@@ -170,7 +170,7 @@ for (let i = 0; i < tracks.length; i++) {
     singer.textContent = tracks[i].singer;
     playListContainer.append(singer);
     singer.addEventListener("click", () => {
-        let text = "Are you download this song?";
+        let text = "Download this song?";
         if (confirm(text) == true) {
             const downloadLink = document.createElement("a");
             const download = downloadLink.href = tracks[i].trackID;
